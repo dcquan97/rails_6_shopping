@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :cart_items
+  resources :carts
+  resources :products
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations',
@@ -13,5 +16,5 @@ Rails.application.routes.draw do
     get 'reset_password', to: 'users/passwords#edit'
   end
 
-  root to: 'application#home'
+  root to: 'products#index'
 end
