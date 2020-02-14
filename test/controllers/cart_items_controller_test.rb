@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class CartItemsControllerTest < ActionDispatch::IntegrationTest
@@ -5,17 +7,17 @@ class CartItemsControllerTest < ActionDispatch::IntegrationTest
     @cart_item = cart_items(:one)
   end
 
-  test "should get index" do
+  test 'should get index' do
     get cart_items_url
     assert_response :success
   end
 
-  test "should get new" do
+  test 'should get new' do
     get new_cart_item_url
     assert_response :success
   end
 
-  test "should create cart_item" do
+  test 'should create cart_item' do
     assert_difference('CartItem.count') do
       post cart_items_url, params: { cart_item: { cart_id: @cart_item.cart_id, product_id: @cart_item.product_id } }
     end
@@ -23,22 +25,22 @@ class CartItemsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to cart_item_url(CartItem.last)
   end
 
-  test "should show cart_item" do
+  test 'should show cart_item' do
     get cart_item_url(@cart_item)
     assert_response :success
   end
 
-  test "should get edit" do
+  test 'should get edit' do
     get edit_cart_item_url(@cart_item)
     assert_response :success
   end
 
-  test "should update cart_item" do
+  test 'should update cart_item' do
     patch cart_item_url(@cart_item), params: { cart_item: { cart_id: @cart_item.cart_id, product_id: @cart_item.product_id } }
     assert_redirected_to cart_item_url(@cart_item)
   end
 
-  test "should destroy cart_item" do
+  test 'should destroy cart_item' do
     assert_difference('CartItem.count', -1) do
       delete cart_item_url(@cart_item)
     end

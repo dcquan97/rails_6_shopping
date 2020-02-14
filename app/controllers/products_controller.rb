@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ProductsController < ApplicationController
   # before_action :set_product, only: [:show, :edit, :update, :destroy]
 
@@ -14,6 +16,4 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     session[:product_id] = @product.id
   end
-
-
 end

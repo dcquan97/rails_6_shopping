@@ -7,12 +7,13 @@ class Users::SessionsController < Devise::SessionsController
   def new
     super
   end
-#
+
+  #
   # POST /resource/sign_in
   def create
     super
     session[:user_id] = current_user.id
-    Cart.new(user_id: current_user.id , completed_at: false)
+    Cart.new(user_id: current_user.id, completed_at: false)
   end
 
   # DELETE /resource/sign_out

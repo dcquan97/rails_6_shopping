@@ -5,9 +5,6 @@ class ApplicationController < ActionController::Base
   helper_method :current_cart
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-
-
-
   protected
 
   def configure_permitted_parameters
@@ -24,10 +21,7 @@ class ApplicationController < ActionController::Base
   end
 
   def
-
-  def current_product
+  def(_current_product)
     session[:product_id]
   end
-
-
 end
