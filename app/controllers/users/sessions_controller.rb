@@ -4,19 +4,22 @@ class Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
-  # def new
-  #   super
-  # end
-
+  def new
+    super
+  end
+#
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def create
+    super
+    session[:user_id] = current_user.id
+    Cart.new(user_id: current_user.id , completed_at: false)
+  end
 
   # DELETE /resource/sign_out
-  # def destroy
-  #   super
-  # end
+  def destroy
+    super
+    reset_session
+  end
 
   # protected
 
