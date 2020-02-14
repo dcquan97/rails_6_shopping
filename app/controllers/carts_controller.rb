@@ -9,20 +9,6 @@ class CartsController < ApplicationController
     item = @items.map{|n| n.product_id}
   end
 
-  # GET /carts/1
-  # GET /carts/1.json
-  def show
-    @cart_items = current_order.cart_items
-  end
-
-  # GET /carts/new
-  # def new
-  #   @cart = Cart.new
-  # end
-
-  # GET /carts/1/edit
-  # def edit
-  # end
 
   # POST /carts
   # POST /carts.json

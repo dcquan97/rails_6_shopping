@@ -1,8 +1,7 @@
 # frozen_string_literal: true
-
 Rails.application.routes.draw do
-  resources :cart_items, only: [:show, :create, :update, :destroy]
-  resources :carts, only: [:index, :show, :create]
+  resources :cart_items, only: [:create, :update, :destroy]
+  resources :carts, only: [:index, :create]
   resources :products, only: [:index,:show]
   devise_for :users, controllers: {
     sessions: 'users/sessions',
