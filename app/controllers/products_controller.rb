@@ -14,6 +14,5 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show
     @product = Product.find(params[:id])
-    session[:product_id] = @product.id
   end
 end

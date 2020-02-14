@@ -2,14 +2,7 @@
     Shop Homepage
   <% end %>
 
-  <% provide :css do %>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%end%>
-
   <!-- Navigation -->
-  <%= provide :header do %>
-    <%= render 'users/shared/navigation' %>
-  <%end%>
   <!-- Page Content -->
   <div class="container">
     <div class="row">
@@ -52,30 +45,12 @@
         </div>
 
         <div class="row">
-          <% @products.each do |product| %>
-            <div class="col-lg-4 col-md-6 mb-4">
-              <div class="card h-100">
-                <a href="/cart_items"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                <div class="card-body">
-                  <h4 class="card-title"><%= product.name %></h4>
-                  <h5><%= number_to_currency(product.price) %></h5>
-                </div>
-                <div class="card-footer">
-                  <a><%= link_to "Detail", product_path(product.id), class: "btn btn-primary" %></a>
-                </div>
-              </div>
-            </div>
-          <%end%>
+          <%= render 'shared/list_product' %>
         </div>
       </div>
     </div>
   </div>
   <!-- /.container -->
   <!-- Footer -->
-  <footer class="py-5 bg-dark">
-    <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
-    </div>
-    <!-- /.container -->
-  </footer>
+  <%= render 'shared/footer' %>
 
