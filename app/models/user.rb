@@ -15,4 +15,14 @@ class User < ApplicationRecord
       user.password = Devise.friendly_token[0, 20]
     end
   end
+
+  has_one :cart, -> { unpaid }, class_name: Cart.name
+  has_many :unpaid_items, through: :cart, source: :cart_items
+  has_many :unpaid_products, through: :unpaid_items, source: :product
+
+  has_many :carts, -> { paid }, class_name: Cart.name
+  has_many :cart_items, through: :carts
+  has_many :products, through: :cart_items, source: :product
+  has_many :paid_products, through: :cart_items, source: :product
+
 end
