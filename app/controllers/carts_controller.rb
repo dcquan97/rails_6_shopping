@@ -6,41 +6,18 @@ class CartsController < ApplicationController
   # GET /carts
   # GET /carts.json
   def index
-    @carts = Cart.find_by(user_id: current_user.id, completed_at: false)
-    @items = @carts.cart_items
-    item = @items.map(&:product_id)
+    carts = Cart.find_by(user_id: current_user.id, completed_at: false)
+    if carts.nil?
+      current_user.build_cart(completed_at: false)
+      current_user.save
+    end
+
   end
 
-  # POST /carts
-  # POST /carts.json
   def create
-    @cart = Cart.new(user_id: current_user.id, completed_at: false)
-    @cart.save
+    item = CartItem.new(cart_id: current_cart.id, product_id: params[:product_id])
+    item.save
   end
-
-  # PATCH/PUT /carts/1
-  # PATCH/PUT /carts/1.json
-  # def update
-  #   respond_to do |format|
-  #     if @cart.update(cart_params)
-  #       format.html { redirect_to @cart, notice: 'Cart was successfully updated.' }
-  #       format.json { render :show, status: :ok, location: @cart }
-  #     else
-  #       format.html { render :edit }
-  #       format.json { render json: @cart.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
-
-  # DELETE /carts/1
-  # DELETE /carts/1.json
-  # def destroy
-  #   @cart.destroy
-  #   respond_to do |format|
-  #     format.html { redirect_to carts_url, notice: 'Cart was successfully destroyed.' }
-  #     format.json { head :no_content }
-  #   end
-  # end
 
   private
 

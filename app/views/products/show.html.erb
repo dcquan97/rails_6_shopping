@@ -1,3 +1,4 @@
+
   <% content_for :title do %>
     Cart Items
   <% end %>
@@ -34,8 +35,11 @@
           </div>
         </div>
         <div class="card card-outline-secondary my-4">
-          <%= button_to "Buy",cart_items_path, method: :post, class: "btn btn-primary" %>
-          <a href="/products" class="btn btn-success">Leave a Review</a>
+          <%= form_tag carts_path, method: :post do %>
+            <%= hidden_field_tag(:product_id,"#{params[:id]}")%>
+            <%= submit_tag('Buy', class: "btn btn-primary") %>
+          <%end%>
+          <%= button_to 'Leave a Review', products_path, method: :get, class: "btn btn-success"  %>
         </div>
       </div>
     </div>
