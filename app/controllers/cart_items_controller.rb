@@ -4,11 +4,6 @@ class CartItemsController < ApplicationController
   before_action :set_cart_item, only: %i[show edit update destroy]
 
 
-  def destroy
-    @del_item = CartItem.find_by(product_id: @product_id, cart_id: current_user.cart.id)
-    @del_item.destroy
-    redirect_to '/carts'
-  end
 
   private
 
