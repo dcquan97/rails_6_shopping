@@ -15,8 +15,13 @@ class CartsController < ApplicationController
   end
 
   def create
-    item = CartItem.new(cart_id: current_cart.id, product_id: params[:product_id])
-    item.save
+    current_item = CartItem.find_by(cart_id: current_cart.id, product_id: params[:product_id])
+    if current_item.nil?
+      item = CartItem.new(cart_id: current_cart.id, product_id: params[:product_id], quantity: 1)
+      item.save
+    else
+      CartItem.update_columns quantity: "#{params[:quantity] + 1}"
+    end
   end
 
   private
