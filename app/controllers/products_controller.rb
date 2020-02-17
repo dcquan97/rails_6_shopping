@@ -6,13 +6,12 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
-    # @order_item = current_user.cart_items.new
+    @products = Product.all.page(params[:page]).per(6).padding(3)
   end
 
   # GET /products/1
   # GET /products/1.json
   def show
-    @product = Product.find(params[:id])
+    @product = Product.find(params[:id]) rescue not_found
   end
 end

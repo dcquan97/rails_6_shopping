@@ -1,7 +1,4 @@
-  <% content_for :title do %>
-    Shop Homepage
-  <% end %>
-
+  <% content_for :title,'Shop Homepage' %>
   <!-- Navigation -->
   <!-- Page Content -->
   <div class="container">
@@ -43,10 +40,10 @@
             <span class="sr-only">Next</span>
           </a>
         </div>
-
         <div class="row">
-          <%= render 'shared/list_product' %>
+          <%= render partial: 'product', collection: @products %>
         </div>
+        <%= paginate @products %>
       </div>
     </div>
   </div>
