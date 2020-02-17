@@ -23,9 +23,17 @@ gem 'jbuilder', '~> 2.7'
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
+gem 'seed-fu'
+gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'master'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
+
+gem 'pry'
+
+gem 'bootstrap', '~> 4.4.1'
+gem 'kaminari'       # gíup phân trang
+gem 'bootstrap-kaminari-views' # giao diện đẹp cho phân trang
+
 
 gem 'devise'
 gem 'omniauth-github'

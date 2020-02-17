@@ -1,0 +1,27 @@
+<nav class="navbar navbar-dark bg-dark">
+<div class="container">
+  <div class="navbar-header">
+  <%= link_to 'Home', root_path, class: 'navbar-brand' %>
+  </div>
+  <div class="navbar">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <%= link_to 'Home', root_path, class: 'sr-only' %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Cart', class: 'nav-link' %>
+      </li>
+      <% if user_signed_in? %>
+        <%= render 'users/shared/sign_in' %>
+      <% else %>
+        <%= render 'users/shared/login' %>
+      <% end %>
+    </ul>
+  </div>
+  </div>
+</div>
+</nav>
