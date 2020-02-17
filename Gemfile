@@ -27,6 +27,7 @@ gem 'seed-fu'
 gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'master'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
+
 gem 'pry'
 gem 'bootstrap', '~> 4.4.1'
 gem 'kaminari'       # gíup phân trang
