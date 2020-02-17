@@ -36,7 +36,7 @@
         </div>
         <div class="card card-outline-secondary my-4">
           <%= form_tag carts_path, method: :post do %>
-            <%= hidden_field_tag(:product_id,"#{params[:id]}")%>
+            <%= hidden_field_tag(:product_id,params[:id])%>
             <%= submit_tag('Buy', class: "btn btn-primary") %>
           <%end%>
           <%= button_to 'Leave a Review', products_path, method: :get, class: "btn btn-success"  %>
