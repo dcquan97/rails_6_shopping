@@ -1,17 +1,4 @@
-
-  <% content_for :title do %>
-    Cart Items
-  <% end %>
-
-  <% provide :css do %>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%end%>
-
-  <!-- Navigation -->
-  <%= provide :header do %>
-  <%= render 'users/shared/navigation.html.erb' %>
-  <%end%>
-
+  <% content_for :title,'Cart Items' %>
   <!-- Page Content -->
   <div class="container">
     <div class="row">
@@ -36,7 +23,7 @@
         </div>
         <div class="card card-outline-secondary my-4">
           <%= form_tag carts_path, method: :post do %>
-            <%= hidden_field_tag(:product_id,"#{params[:id]}")%>
+            <%= hidden_field_tag(:product_id,params[:id])%>
             <%= submit_tag('Buy', class: "btn btn-primary") %>
           <%end%>
           <%= button_to 'Leave a Review', products_path, method: :get, class: "btn btn-success"  %>
@@ -45,9 +32,6 @@
     </div>
   </div>
   <!-- Footer -->
-  <footer class="py-5 bg-dark">
-    <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
-    </div>
-  </footer>
+  <%= render 'shared/footer' %>
+
 
