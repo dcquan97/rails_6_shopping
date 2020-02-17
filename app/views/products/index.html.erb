@@ -41,7 +41,7 @@
           </a>
         </div>
         <div class="row">
-          <%= render 'product' %>
+          <%= render partial: 'product', collection: @products %>
         </div>
         <%= paginate @products %>
       </div>
