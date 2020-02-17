@@ -6,11 +6,7 @@ class CartsController < ApplicationController
   # GET /carts
   # GET /carts.json
   def index
-    carts = Cart.find_by(user_id: current_user.id, completed_at: false)
-    if carts.nil?
-      current_user.build_cart(completed_at: false)
-      current_user.save
-    end
+    carts = Cart.find_or_create_by(user_id: current_user.id, completed_at: false)
   end
 
   def create

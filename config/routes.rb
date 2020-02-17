@@ -3,7 +3,6 @@
 Rails.application.routes.draw do
   resources :cart_items, only: %i[create update destroy]
   resources :carts, only: %i[index create]
-  resources :products, only: %i[index show]
 
   concern :paginatable do
     get '(page/:page)', action: :index, on: :collection, as: ''
