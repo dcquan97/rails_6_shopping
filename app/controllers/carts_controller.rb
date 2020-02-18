@@ -18,6 +18,6 @@ class CartsController < ApplicationController
     if item.nil?
       redirect_to product_path(params[:product_id]), alert: 'Failed to add to cart'
     end
-    redirect_to '/carts'
+    redirect_to carts_path
   end
 end
