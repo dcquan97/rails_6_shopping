@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   end
   resources :products, only: %i[index show], concerns: :paginatable
 
-
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations',
