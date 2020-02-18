@@ -1,4 +1,5 @@
   <!-- PRODUCT -->
+
   <div class="row">
       <% item_del = current_user.unpaid_items.find_by(cart_id: current_user.cart.id, product_id: product.id) %>
       <div class="col-12 col-sm-12 col-md-2 text-center">
@@ -12,10 +13,12 @@
       </div>
       <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row">
         <div class="col-3 col-sm-3 col-md-6 text-md-right" style="padding-top: 5px">
-          <h6><strong><%= number_to_currency(product.price) %><span class="text-muted"></span></strong></h6>
+          <h6><strong><%= number_to_currency(product.price) %>
+            <%= number_field_tag 'quantity', item_del.quantity %>
+            <span class="text-muted"></span></strong></h6>
         </div>
         <div class="col-2 col-sm-2 col-md-2 text-right">
-          <%= button_to 'Delete', {:controller => :cart_items,:action => 'destroy', :id => item_del.id , value: @product_id}, method: :delete,data: { confirm: "Are you sure?"}, class: "btn btn-danger"  %>
+          <%= button_to 'Delete', {controller: :cart_items, action: 'destroy', id: item_del.id , value: @product_id}, method: :delete,data: { confirm: "Are you sure?"}, class: "btn btn-danger"  %>
         </div>
       </div>
     </div>
