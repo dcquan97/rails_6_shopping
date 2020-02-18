@@ -12,7 +12,6 @@ class CartsController < ApplicationController
 
   def create
     item = current_user.cart.cart_items.create product_id: params[:product_id]
-    item.save
     redirect_to '/carts'
   end
 end
