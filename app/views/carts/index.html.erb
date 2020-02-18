@@ -5,13 +5,14 @@
   <div class="card shopping-cart">
     <div class="card-header bg-dark text-light">
       <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-      Shipping cart
+      Shopping cart
       <a href="/products" class="btn btn-outline-info btn-sm pull-right">Back Products</a>
       <div class="clearfix"></div>
     </div>
-
-    <%= render 'item' %>
-
+    <div class="card-body">
+      <% @products = current_user.unpaid_products%>
+      <%= render partial: 'product', collection: @products %>
+    </div>
     <div class="pull-right">
       <a href="" class="btn btn-outline-secondary pull-right">
         Update shopping cart
