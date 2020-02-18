@@ -5,22 +5,23 @@ class CartsController < ApplicationController
   # GET /carts
   # GET /carts.json
   def index
-    @carts = Cart.find_or_create_by(user_id: current_user.id, completed_at: false)
+    carts = Cart.find_or_create_by(user_id: current_user.id, completed_at: false)
+    if carts.nil?
+      redirect_to products_path, alert: 'Failed to create shopping cart'
+    end
   end
 
   def create
-    @current_item = current_user.unpaid_items.find_by(product_id: params[:product_id])
-    if @current_item.nil?
-      current_user.cart.cart_items.create product_id: params[:product_id]
+    item = current_user.unpaid_items.find_by(product_id: params[:product_id])
+    if item.nil?
+      begin
+        current_user.cart.cart_items.create!(product_id: params[:product_id])
+      rescue
+        redirect_to product_path(params[:product_id]), alert: 'Failed to add to cart'
+      end
     else
-      update_quantity
+      item.increment! :quantity
+      redirect_to carts_path
     end
-    redirect_to '/carts'
   end
-
-  def update_quantity
-    value = @current_item.quantity +=1
-    @current_item.update_attributes(quantity: value)
-  end
-
 end

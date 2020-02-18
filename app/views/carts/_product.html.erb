@@ -1,31 +1,26 @@
-<div class="card-body">
   <!-- PRODUCT -->
-  <% items = current_user.unpaid_products.pluck(:id,:name,:price)  %>
-  <% items.each do |item_id,item_name,item_price| %>
-  <% @product_id = item_id %>
-  <% item_del = current_user.unpaid_items.find_by(cart_id: current_user.cart.id, product_id: @product_id) %>
-    <div class="row">
+
+  <div class="row">
+      <% item_del = current_user.unpaid_items.find_by(cart_id: current_user.cart.id, product_id: product.id) %>
       <div class="col-12 col-sm-12 col-md-2 text-center">
         <img class="img-responsive" src="http://placehold.it/120x80" alt="prewiew" width="120" height="80">
       </div>
       <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-6">
-        <h4 class="product-name"><%= item_name %><strong> </strong></h4>
+        <h4 class="product-name"><%= product.name %><strong> </strong></h4>
         <h4>
           <small>Product description</small>
         </h4>
       </div>
       <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row">
         <div class="col-3 col-sm-3 col-md-6 text-md-right" style="padding-top: 5px">
-          <h6><strong><%= number_to_currency(item_price) %>
+          <h6><strong><%= number_to_currency(product.price) %>
             <%= number_field_tag 'quantity', item_del.quantity %>
             <span class="text-muted"></span></strong></h6>
         </div>
         <div class="col-2 col-sm-2 col-md-2 text-right">
-          <%= button_to 'Delete', {:controller => :cart_items,:action => 'destroy', :id => "#{item_del.id}" , value: @product_id}, method: :delete,data: { confirm: "Are you sure?"}, class: "btn btn-danger"  %>
+          <%= button_to 'Delete', {controller: :cart_items, action: 'destroy', id: item_del.id , value: @product_id}, method: :delete,data: { confirm: "Are you sure?"}, class: "btn btn-danger"  %>
         </div>
       </div>
     </div>
-<hr>
-  <% end %>
-
+  <hr>
   <!-- END PRODUCT -->
