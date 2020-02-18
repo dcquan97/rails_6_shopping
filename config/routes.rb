@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+
   resources :cart_items, only: %i[create update destroy]
   resources :carts, only: %i[index create]
+
 
   concern :paginatable do
     get '(page/:page)', action: :index, on: :collection, as: ''

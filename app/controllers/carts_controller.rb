@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class CartsController < ApplicationController
+
   before_action :authenticate_user!
   # GET /carts
   # GET /carts.json
@@ -22,5 +23,6 @@ class CartsController < ApplicationController
     value = @current_item.quantity +=1
     @current_item.update_attributes(quantity: value)
   end
+
 
 end
