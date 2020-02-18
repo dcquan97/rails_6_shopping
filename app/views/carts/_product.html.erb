@@ -15,7 +15,7 @@
           <h6><strong><%= number_to_currency(product.price) %><span class="text-muted"></span></strong></h6>
         </div>
         <div class="col-2 col-sm-2 col-md-2 text-right">
-          <%= button_to 'Delete', {:controller => :cart_items,:action => 'destroy', :id => item_del.id , value: @product_id}, method: :delete,data: { confirm: "Are you sure?"}, class: "btn btn-danger"  %>
+          <%= button_to 'Delete', {controller: :cart_items,action: 'destroy', id: item_del.id , value: product.id}, method: :delete,data: { confirm: "Are you sure?"}, class: "btn btn-danger"  %>
         </div>
       </div>
     </div>
