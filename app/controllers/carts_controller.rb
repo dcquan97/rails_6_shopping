@@ -9,13 +9,18 @@ class CartsController < ApplicationController
   end
 
   def create
-    @carts
-    current_user.unpaid_items.find_or_create_by(product_id: params[:product_id])
+    @current_item = current_user.unpaid_items.find_by(product_id: params[:product_id])
+    if @current_item.nil?
+      CartItem.create(cart_id: current_user.cart.id, product_id: params[:product_id])
+    else
+      update_quantity
+    end
     redirect_to '/carts'
   end
 
   def update_quantity
-    current_user.unpaid_items.update_attribute(:quantity)
+    value = @current_item.quantity +=1
+    @current_item.update_attributes(quantity: value)
   end
 
 end

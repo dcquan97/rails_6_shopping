@@ -3,7 +3,7 @@
   <% items = current_user.unpaid_products.pluck(:id,:name,:price)  %>
   <% items.each do |item_id,item_name,item_price| %>
   <% @product_id = item_id %>
-  <% item_del = current_user.unpaid_items.find_by(cart_id: current_user.cart.id, product_id: @product_id, quantity: 1) %>
+  <% item_del = current_user.unpaid_items.find_by(cart_id: current_user.cart.id, product_id: @product_id) %>
     <div class="row">
       <div class="col-12 col-sm-12 col-md-2 text-center">
         <img class="img-responsive" src="http://placehold.it/120x80" alt="prewiew" width="120" height="80">
@@ -17,7 +17,7 @@
       <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row">
         <div class="col-3 col-sm-3 col-md-6 text-md-right" style="padding-top: 5px">
           <h6><strong><%= number_to_currency(item_price) %>
-
+            <%= number_field_tag 'quantity', item_del.quantity %>
             <span class="text-muted"></span></strong></h6>
         </div>
         <div class="col-2 col-sm-2 col-md-2 text-right">
