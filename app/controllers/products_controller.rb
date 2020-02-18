@@ -11,6 +11,8 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
-    @product = Product.find(params[:id]) rescue not_found
+    @product = Product.find(params[:id])
+    rescue
+      redirect_to products_path, alert: 'Not Found'
   end
 end
