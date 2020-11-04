@@ -8,7 +8,7 @@ ruby '2.6.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.0'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3', '~> 1.4'
+gem 'mysql2'
 # Use Puma as the app server
 gem 'puma', '~> 3.12'
 # Use SCSS for stylesheets
@@ -27,7 +27,7 @@ gem 'seed-fu'
 gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'master'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
-
+gem 'dotenv'
 gem 'pry'
 gem 'bootstrap', '~> 4.4.1'
 gem 'kaminari'       # gíup phân trang

@@ -3,7 +3,6 @@
 Rails.application.routes.draw do
   resources :cart_items, only: %i[create update destroy]
   resources :carts, only: %i[index create]
-
   concern :paginatable do
     get '(page/:page)', action: :index, on: :collection, as: ''
   end
@@ -20,6 +19,6 @@ Rails.application.routes.draw do
     get 'forgot_password', to: 'users/passwords#new'
     get 'reset_password', to: 'users/passwords#edit'
   end
-
+  resources :thanks
   root to: 'products#index'
 end

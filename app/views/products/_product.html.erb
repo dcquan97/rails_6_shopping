@@ -6,7 +6,15 @@
       <h5><%= number_to_currency(product.price) %></h5>
     </div>
     <div class="card-footer">
-      <a><%= link_to "Detail", product_path(product.id), class: "btn btn-primary" %></a>
+      <a
+        data-imstreamDetail=10002
+        data-imstreamEcProductId='SH19F0084'>
+        <img
+         src="https://hatrabbits.com/wp-content/uploads/2017/01/tafel-1.jpg"
+         data-imstreamDetail=10002
+         data-imstreamEcProductId='SH19F0084'/>
+        <%= link_to "Detail", product_path(product.id), class: "btn btn-primary" %>
+      </a>
     </div>
   </div>
 </div>

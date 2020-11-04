@@ -9,6 +9,7 @@ class CartsController < ApplicationController
     if carts.nil?
       redirect_to products_path, alert: 'Failed to create shopping cart'
     end
+    @total_price = current_user.unpaid_products.pluck(:price).inject(0){|sum,x| sum + x }
   end
 
   def create
